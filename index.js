@@ -1,4 +1,5 @@
 const fs = require('fs');
+
 const sample = 	{
     "name": "John Snow",
     "age": 28,
@@ -7,12 +8,13 @@ const sample = 	{
 }
 
 const length = process.argv[2];
-console.log(`Length: ${length}`);
 const result = [];
+let newSample = null;
 for(let index=0; index<length; index++){
-   sample.aadharNo = sample.aadharNo + index;
-   co
-   result.push(sample);
+    newSample = {...sample};
+    newSample.aadharNo = sample.aadharNo + index;
+   result.push(newSample);
+   newSample=null;
 }
 
 fs.writeFile(__dirname+'/sampleData.json', JSON.stringify(result), (err, result)=>{
